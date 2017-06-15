@@ -1,0 +1,51 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        //$localGradlePluginVersion是gradle.properties中的数据
+        classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        //Add the JitPack repository
+        maven { url "https://jitpack.io" }
+        //支持arr包
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
+ext{
+    buildToolsVersion = localBuildToolsVersion
+    compileSdkVersion = 25
+    minSdkVersion = 16
+    targetSdkVersion = 25
+    versionCode = 20001
+    versionName = "2.0.1"
+
+    annotationProcessor = "1.1.7"
+
+    routerVersion = "1.2.2"
+
+    okhttpVersion = "3.8.0"
+    gsonVersion = "2.8.0"
+    glideVersion = "3.7.0"
+    retrofitVersion = "2.3.0"
+}
